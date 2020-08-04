@@ -23,7 +23,9 @@ public:
     }
 
     ~SharedPtr(){
-        --(*refCounter_);
+        if(data_){
+             --(*refCounter_);
+        }
         if(refCounter_->getCounter() == 0){
             delete refCounter_;
             delete data_;
